@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html ng-app="store">
+<html ng-app="gemStore">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
     <title>My Angular Store</title>
   </head>
-  <body>
+  <body ng-controller="StoreController as store">
+
+    <h1>{{store.product.name}}</h1>
+    <h2>{{store.product.price}}</h2>
+    <p>{{store.product.description}}</p>
+
+
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
-
-    <p>
-      {{"hello" + " you"}}
-    </p>
   </body>
 </html>
