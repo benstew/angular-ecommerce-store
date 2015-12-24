@@ -17,6 +17,15 @@
 
   });
 
+  app.controller("ReviewController", function(){
+    this.review = {};
+
+    this.addReview = function(product) {
+      product.reviews.push(this.review);
+      this.review = {};
+    };
+  });
+
   var gems = [
     {
      name: 'Dodecahedron',
@@ -24,6 +33,18 @@
      description: 'Nice and pretty',
      canPurchase: true,
      soldOut: false,
+     reviews: [
+       {
+         stars: 5,
+         body: "I love this product",
+         author: "joeS@gmail.com"
+       },
+       {
+         stars: 1,
+         body: "I didn't really like this product",
+         author: "smoothie@gmail.com"
+       }
+     ],
      images: [
        {
          full:'dodeca-gem.jpg',
