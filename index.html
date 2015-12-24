@@ -7,13 +7,49 @@
   </head>
   <body ng-controller="StoreController as store">
 
-    <div ng-repeat="product in store.products">
-      <h1>{{product.name}}</h1>
-      <h2>{{product.price}}</h2>
-      <p>{{product.description}}</p>
-      <button ng-show="product.canPurchase">Add to Cart</button>
-
+    <div class="header text-center">
+      <h1>My Store</h1>
+      <h2>-Built with Angular-</h2>
     </div>
+
+  <ul class ="list-group">
+    <li class="list-group-item" ng-repeat="product in store.products">
+        <h2>{{product.name}}</h2>
+        <h3><em class="pull-right">{{product.price | currency}}</em></h3>
+        <img ng-src="{{product.images[0].full}}"/>
+
+        <section class="panel" ng-controller="PanelController as panel">
+          <ul class="nav nav-pills">
+            <li ng-class="{ active: panel.isSelected(1) }">
+              <a href ng-click="panel.selectTab(1)">Description</a>
+            </li>
+            <li ng-class="{ active: panel.isSelected(2) }">
+              <a href ng-click="panel.selectTab(2)">Sepcifications</a>
+            </li>
+            <li ng-class="{ active: panel.isSelected(3) }">
+              <a href ng-click="panel.selectTab(3)">Reviews</a>
+            </li>
+          </ul>
+
+        <div ng-show="panel.isSelected(1)">
+          <h4>Description</h4>
+          <blockquote>{{product.description}}</blockquote>
+        </div>
+        <div ng-show="panel.isSelected(2)">
+          <h4>Specifications</h4>
+          <blockquote>None yet</blockquote>
+        </div>
+        <div ng-show="panel.isSelected(3)">
+          <h4>Reviews</h4>
+          <blockquote>None yet</blockquote>
+        </div>
+        </section>
+
+        <button ng-show="product.canPurchase">Add to Cart</button>
+    </li>
+  </ul>
+
+
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </body>
